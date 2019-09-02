@@ -36,9 +36,13 @@ GlobalParams.__new__.__defaults__ = (None,) * len(GlobalParams._fields)
 BlockArgs.__new__.__defaults__ = (None,) * len(BlockArgs._fields)
 
 
+# def relu_fn(x):
+#     """ Swish activation function """
+#     return x * torch.sigmoid(x)
+
 def relu_fn(x):
-    """ Swish activation function """
-    return x * torch.sigmoid(x)
+    """ Mish activation function """
+    return x * (torch.tanh(F.softplus(x)))
 
 
 def round_filters(filters, global_params):
